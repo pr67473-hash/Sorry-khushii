@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Khushi ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle at top, #0b1d3a, #000);
+    font-family: 'Segoe UI', sans-serif;
+    color: #fff;
+}
+
+/* Stars */
+.star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    opacity: 0.8;
+}
+
+/* Rose petals */
+.petal {
+    position: absolute;
+    top: -50px;
+    font-size: 22px;
+    animation: fall linear infinite;
+    opacity: 0.8;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Card */
+.card {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(14px);
+    padding: 35px;
+    max-width: 680px;
+    border-radius: 30px;
+    box-shadow: 0 0 60px rgba(255, 150, 180, 0.35);
+    text-align: center;
+    animation: fadeIn 2s ease;
+}
+
+/* Sparkle name */
+h1 {
+    font-size: 40px;
+    margin-bottom: 25px;
+    background: linear-gradient(90deg, #ff9aa2, #ffd1dc, #ff9aa2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+    0% { background-position: 0% }
+    100% { background-position: 200% }
+}
+
+#text {
+    font-size: 19px;
+    line-height: 1.85;
+    color: #fcefee;
+    min-height: 300px;
+}
+
+.signature {
+    margin-top: 20px;
+    font-size: 20px;
+    color: #ffb6c1;
+}
+
+button {
+    margin-top: 20px;
+    padding: 12px 22px;
+    border-radius: 25px;
+    border: none;
+    background: #ff9aa2;
+    color: #000;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #ffd1dc;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Password screen */
+#lock {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle, #020617, #000);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+input {
+    padding: 12px 18px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    margin-top: 15px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- PASSWORD -->
+<div id="lock">
+    <h2>Only for Khushi 💕</h2>
+    <p>Enter the secret word</p>
+    <input type="password" id="pwd" placeholder="Password">
+    <button onclick="unlock()">Open ❤️</button>
+</div>
+
+<!-- MUSIC -->
+<audio autoplay loop>
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_2c5b7c2c89.mp3" type="audio/mpeg">
+</audio>
+
+<!-- CARD -->
+<div class="card" style="display:none" id="card">
+    <h1>Khushi ❤️</h1>
+    <div id="text"></div>
+    <button onclick="forgive()">Will you forgive me? 🕊️</button>
+    <div class="signature">— Piyush</div>
+</div>
+
+<script>
+// 🔐 PASSWORD
+const correctPassword = "sorry";
+
+// Unlock
+function unlock() {
+    if (document.getElementById("pwd").value === correctPassword) {
+        document.getElementById("lock").style.display = "none";
+        document.getElementById("card").style.display = "block";
+        typeText();
+    } else {
+        alert("Wrong password 💔");
+    }
+}
+
+// Typing text
+const message = `I’m truly sorry for the mistakes I’ve made.
+I know words can never fully heal what I hurt,
+but please believe this comes straight from my heart.
+
+Every day, I’m learning…
+every day, I’m growing…
+and every step forward, I want to take with you.
+
+You mean far too much to me
+to ever repeat the same mistakes again.
+I don’t dream of perfection—
+I dream of us.
+
+Of choosing you,
+loving you,
+and protecting what we have with everything in me.
+
+Please give me one chance
+to prove that my love for you is real,
+constant,
+and forever yours.`;
+
+let i = 0;
+function typeText() {
+    if (i < message.length) {
+        document.getElementById("text").innerHTML +=
+            message.charAt(i) === "\n" ? "<br>" : message.charAt(i);
+        i++;
+        setTimeout(typeText, 40);
+    }
+}
+
+// Forgive button
+function forgive() {
+    alert("Thank you for giving us another chance 💕");
+}
+
+// Stars
+for (let i = 0; i < 120; i++) {
+    const star = document.createElement("div");
+    star.className = "star";
+    star.style.width = star.style.height = Math.random() * 2 + "px";
+    star.style.left = Math.random() * 100 + "vw";
+    star.style.top = Math.random() * 100 + "vh";
+    document.body.appendChild(star);
+}
+
+// Rose petals
+setInterval(() => {
+    const petal = document.createElement("div");
+    petal.className = "petal";
+    petal.innerHTML = "🌹";
+    petal.style.left = Math.random() * 100 + "vw";
+    petal.style.fontSize = (Math.random() * 18 + 14) + "px";
+    petal.style.animationDuration = (Math.random() * 3 + 6) + "s";
+    document.body.appendChild(petal);
+    setTimeout(() => petal.remove(), 9000);
+}, 350);
+</script>
+
+</body>
+</html>
